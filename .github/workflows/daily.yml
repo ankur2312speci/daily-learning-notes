@@ -1,0 +1,30 @@
+name: Daily Learning Commit
+
+on:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Run learning script
+        run: python generate.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "learning-bot"
+          git config user.email "learning-bot@github.com"
+          git add .
+          git commit -m "📘 Daily learning log" || echo "No changes"
+          git push
