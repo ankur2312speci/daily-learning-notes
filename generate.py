@@ -60,7 +60,6 @@ content = f"""
 
 ## ✍️ What I Learned
 Today I studied **{topic}** under **{category}** and understood its core concepts.
-
 ## 💻 Code Example
 ```python
-print("Learning every day!")
+print("Learning every day!")"""
