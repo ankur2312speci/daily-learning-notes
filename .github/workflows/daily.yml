@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -25,6 +27,7 @@ jobs:
         run: |
           git config user.name "learning-bot"
           git config user.email "learning-bot@github.com"
+          git status
           git add .
           git commit -m "📘 Daily learning log" || echo "No changes"
           git push
